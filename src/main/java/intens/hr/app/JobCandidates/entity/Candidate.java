@@ -57,6 +57,16 @@ public class Candidate {
 		this.skills = skills;
 	}
 
+	public Candidate(Integer id, String name, Date birthdate, String contactNumber, String email) {
+		this.id = id;
+		this.fullName = name;
+		this.birthdate = birthdate;
+		this.contactNumber = contactNumber;
+		this.email = email;
+
+
+	}
+
 	public Integer getId() {
 		return id;
 	}

@@ -37,5 +37,22 @@ public class CandidateService {
 	public List<Candidate> getAllBySkill(String skill){
 		return candidateRepository.findBySkillName(skill);
 	}
+	
+	public boolean isUniqueEmail(Integer id, String email) {
+		boolean isUniqueEmail = false;
+		
+		Candidate candidateByEmail = candidateRepository.findByEmail(email);
+		boolean isCreatingNew = (id == null || id ==0);
+		
+		if(isCreatingNew) {
+			if(candidateByEmail != null) isUniqueEmail = true;
+		}else {
+			if(candidateByEmail.getId() != id) {
+				isUniqueEmail = true;
+			}
+		}
+		
+		return isUniqueEmail;
+	}
 
 }

@@ -30,4 +30,22 @@ public class SkillService {
 		return skillRepository.findByCandidateId(id);
 	}
 
+	public String checkUnique(Integer id, String name) {
+		boolean isCreatingNew = (id==null || id==0);
+		
+		Skill skillByName = skillRepository.findByName(name);
+		
+		if(isCreatingNew) {
+			if(skillByName != null) {
+				return "DuplicatedName";
+			}
+		}
+		else {
+			if(skillByName !=null && skillByName.getId() != id) {
+				return "DuplicatedName";
+			}
+		}
+		
+		return "OK";
+	}
 }
